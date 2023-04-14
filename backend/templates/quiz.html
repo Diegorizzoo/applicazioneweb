@@ -8,10 +8,10 @@
 <form method="POST">
     {% csrf_token %}
     <input type="hidden" name="question_id" value="{{ question.id }}">
-    <input type="radio" id="yes" name="answer" value="yes" required>
-    <label for="yes">SI</label><br>
-    <input type="radio" id="no" name="answer" value="no" required>
-    <label for="no">NO</label><br>
+    <input type="radio" id="SI" name="answer" value="SI" required>
+    <label for="SI">SI</label><br>
+    <input type="radio" id="NO" name="answer" value="NO" required>
+    <label for="NO">NO</label><br>
     <button type="submit">Invia risposta</button>
 </form>
 {% endblock %}
