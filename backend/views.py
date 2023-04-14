@@ -20,7 +20,7 @@ def backend(request):
 
 
 def quiz(request):
-    unanswered_questions = QA.question.filter(answered_correctly=False)
+    unanswered_questions = QA.objects.filter(answered_correctly=False)
     if not unanswered_questions:
         # Se non ci sono domande senza answer corretta, mostra il messaggio di completamento
         return render(request, 'quiz_completed.html')
@@ -31,11 +31,10 @@ def quiz(request):
     if request.method == 'POST':
         # Controlla la answer data dall'utente
         answer = request.POST.get('answer')
-        if answer == QA.answer:
+        if answer and answer.strip().upper() == question.answer.upper():
             # Se la answer è corretta, aggiorna il campo answered_correctly a True
-
-            QA.answered_correctly = True
-            QA.save()
+            question.answered_correctly = True
+            question.save()
             return redirect('quiz')
         else:
             # Se la answer è errata, mostra un messaggio di errore e ricarica la pagina
