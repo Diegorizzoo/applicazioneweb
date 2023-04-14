@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+    <form method="POST">
+        {% csrf_token %}
+        <label for="question">domanda:</label>
+        <input type="text" name="question" id="question">
+        <br>
+        <label for="answer">risposta:</label>
+        <input type="radio" name="answer" id="answer_si" value="SI">
+        <label for="answer_si">SI</label>
+        <input type="radio" name="answer" id="answer_no" value="NO">
+        <label for="answer_no">NO</label>
+        <br>
+        <input type="submit" value="Invio">
+    </form>
+{% endblock %}
